@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 28, 2022 at 04:44 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- Host: 127.0.0.1
+-- Generation Time: Oct 27, 2022 at 09:43 AM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `water-managment`
+-- Database: `water-management`
 --
 
 -- --------------------------------------------------------
@@ -40,11 +40,11 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `email`, `password`, `type`) VALUES
-(1, 'root', '', '$2y$10$FG3.WOTTFlGYlQ03O/Eqi.RrtZIoNHxQwfLuGxULeiZTxGFWe4DX.', 'admin'),
 (2, 'root', '$2y$10$1f1O.n7smkk3iRkF5P3WcOK73VW6FQ4o8GkGZBxfkgFDuUnSNB60C', 'dik@gmail.com', 'admin'),
 (3, 'root', 'pass@waa', '$2y$10$dztIGrP7r7uNGl63BAUf..iSN2QW8aWSwIFtSqH7peOvkyFgodDB2', 'admin'),
 (4, 'admin', 'admin@gmail.com', '$2y$10$JXUHqe014he1VbVJfv441eh05wGBn4VMib2QwTuDb0LO.pOQVhQES', 'admin'),
-(6, 'dik', 'dik@gmail.com', '$2y$10$xOz/HFJ4O6/oJIPCF5LJ/ubUX8KNaYOD7YoMauIBUNr263NQTsiTG', 'admin');
+(6, 'dik', 'dik@gmail.com', '$2y$10$xOz/HFJ4O6/oJIPCF5LJ/ubUX8KNaYOD7YoMauIBUNr263NQTsiTG', 'admin'),
+(8, 'Abajila', 'rayabajila001@gmail.com', '$2y$10$MIpR2Ja5.Pjvx7ql0uGzr.pPopk9UK06gGx967A17B6iwNKiCukb2', 'admin');
 
 -- --------------------------------------------------------
 
@@ -63,9 +63,12 @@ CREATE TABLE `customer` (
 --
 
 INSERT INTO `customer` (`customer_id`, `customer_name`, `customer_phone`) VALUES
-(1, 'Dikshant23', '99750576266'),
-(3, 'HEllo', '1223'),
-(5, 'Akshata', '9004439609');
+(1, 'Msanindi', '25411611789'),
+(3, 'Mwadilo', '25498123451'),
+(5, 'Scar', '254709876543'),
+(6, 'Eve', '2547923456'),
+(7, 'Wendy', '25478965432'),
+(8, 'Jane', '254722123456');
 
 -- --------------------------------------------------------
 
@@ -91,11 +94,7 @@ INSERT INTO `orders` (`order_id`, `type`, `vendor_id`, `customer_id`, `total`, `
 (1045, 1, NULL, 1, 200, 'paid', '2022-02-14'),
 (1046, 1, NULL, 1, 0, 'pending', '2022-02-14'),
 (1047, 1, NULL, 1, 0, 'pending', '2022-02-14'),
-(1049, 1, NULL, 1, 0, 'paid', '2022-02-14'),
-(1050, 1, NULL, 1, 0, 'pending', '2022-02-14'),
-(1051, 1, NULL, 1, 0, 'pending', '2022-02-14'),
 (1052, 1, NULL, 1, 0, 'paid', '2022-02-14'),
-(1053, 1, NULL, 1, 0, 'pending', '2022-02-14'),
 (1054, 1, NULL, 1, 0, 'pending', '2022-02-14'),
 (1055, 1, NULL, 1, 0, 'pending', '2022-02-14'),
 (1056, 1, NULL, 1, 0, 'pending', '2022-02-14'),
@@ -124,8 +123,13 @@ INSERT INTO `orders` (`order_id`, `type`, `vendor_id`, `customer_id`, `total`, `
 (1079, 1, NULL, 1, 0, 'pending', '2022-02-15'),
 (1080, 1, NULL, 1, 0, 'pending', '2022-02-15'),
 (1081, 1, NULL, 1, 20710, 'paid', '2022-02-15'),
-(1082, 1, NULL, 1, 1700, 'paid', '2022-02-16'),
-(1083, 0, 88, NULL, 0, 'pending', '2022-02-16');
+(1083, 0, 88, NULL, 0, 'pending', '2022-02-16'),
+(1084, 1, NULL, 3, 2000, 'pending', '2022-10-27'),
+(1085, 0, 90, NULL, 0, 'pending', '2022-10-27'),
+(1086, 0, 74, NULL, 0, 'pending', '2022-10-27'),
+(1088, 1, NULL, 7, 8500, 'paid', '2022-10-27'),
+(1089, 1, NULL, 5, 8800, 'pending', '2022-10-27'),
+(1090, 1, NULL, 8, 7000, 'pending', '2022-10-27');
 
 -- --------------------------------------------------------
 
@@ -146,13 +150,14 @@ CREATE TABLE `orders_product` (
 
 INSERT INTO `orders_product` (`id`, `order_id`, `product_id`, `quantity`) VALUES
 (1, 1045, 1, 10),
-(4, 1049, 1, 11),
-(5, 1050, 1, 11),
-(6, 1051, 1, 11),
-(7, 1053, 1, 11),
 (10, 1081, 2, 58),
 (11, 1081, 3, 10),
-(12, 1082, 1, 85);
+(13, 1084, 1, 20),
+(16, 1088, 2, 40),
+(17, 1088, 3, 30),
+(18, 1089, 2, 40),
+(19, 1089, 3, 32),
+(20, 1090, 1, 70);
 
 -- --------------------------------------------------------
 
@@ -167,17 +172,17 @@ CREATE TABLE `products` (
   `product_cost` int(11) NOT NULL,
   `product_price` int(11) NOT NULL DEFAULT 0,
   `product_stock` int(11) NOT NULL DEFAULT 0
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`product_id`, `product_category`, `product_name`, `product_cost`, `product_price`, `product_stock`) VALUES
-(1, 'Water Bottle', 'Bislery', 0, 20, 1712),
-(2, 'Water Jar', 'Kinely23', 0, 355, 100),
-(3, 'aw', '2323', 0, 12, 10),
-(4, 'www', 'www', 0, 233, 213123);
+(1, 'Water Bottle', 'Keringet', 0, 100, 2653),
+(2, 'Water Bottle', 'Dasani', 0, 100, 80),
+(3, 'Sparkling Water', 'BZsparkling Water', 0, 150, 478),
+(4, 'Water Treatment', 'Sono Water Guard', 0, 50, 500);
 
 -- --------------------------------------------------------
 
@@ -199,11 +204,10 @@ CREATE TABLE `vendor` (
 --
 
 INSERT INTO `vendor` (`id`, `vendor_name`, `vendor_phone`, `product_id`, `vendor_quantity`, `vendor_price`) VALUES
-(74, 'awdwad', '11113243132', 1, 1243, 43),
-(80, 'John', '88117722', 2, 2312, 242423),
-(88, 'Krishnataknt', '88888888888', 1, 23, 233),
-(90, 'awdwad', '111', 2, 123, 223),
-(92, 'Test2', '8828822213', 1, 122, 555);
+(74, 'john', '25411789604', 1, 1243, 100),
+(80, 'John', '0711234567', 1, 2312, 100),
+(88, 'Sammy', '0711520798', 1, 50, 100),
+(90, 'Simon', '0734567980', 3, 500, 150);
 
 --
 -- Indexes for dumped tables
@@ -259,31 +263,31 @@ ALTER TABLE `vendor`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1084;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1091;
 
 --
 -- AUTO_INCREMENT for table `orders_product`
 --
 ALTER TABLE `orders_product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `vendor`
